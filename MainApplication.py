@@ -33,6 +33,7 @@ class Ui_MainForm(object):
 		"color:white;\n"
 		"")
         self.textFirstLanguage.setObjectName("textFirstLanguage")
+        self.textFirstLanguage.textChanged.connect(self.Translate)
 
         self.textLastLanguage = QtWidgets.QTextEdit(MainForm)
         self.textLastLanguage.setGeometry(QtCore.QRect(480, 50, 441, 351))
@@ -120,10 +121,10 @@ class Ui_MainForm(object):
         self.BtnChange.setGeometry(QtCore.QRect(420, 10, 111, 31))
         self.BtnChange.setFont(font)
         self.BtnChange.setStyleSheet("QPushButton{border-style:insert;border:1px solid;\n"
-		"background-color:rgb(240, 178, 122);\n"
+		"background-color:rgb(225, 116, 16);\n"
 		"color:white;}\n"
-		"QPushButton:hover{background-color:rgb(46, 134, 193);}\n"
-		"QPushButton:Pressed{background-color:rgb(52, 152, 219);}")
+		"QPushButton:hover{background-color:rgb(243, 142, 50);}\n"
+		"QPushButton:Pressed{background-color:rgb(221, 139, 64);}")
         icon.addPixmap(QtGui.QPixmap("Images/IMG-Trasfer.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.BtnChange.setIcon(icon)
         self.BtnChange.setObjectName("BtnChange")
@@ -169,22 +170,31 @@ class Ui_MainForm(object):
         #Creamos una Instancion a la Clase Translator
         self.translator = Translator()
 
+
+    def text(self):
+        result = self.textFirstLanguage.toPlainText()
+        self.textLastLanguage.setPlainText(result)
+
     def InitCombox(self):
     	self.CboFirstLanguage.addItems(["Ingles","Español","Aleman","Frances","Italiano","Japones","Chino"])
     	self.CboLastLanguage.addItems(["Ingles","Español","Aleman","Frances","Italiano","Japones","Chino"])
 
     def Translate(self):
+        #Controlamos los Errores que se Puedan Generar
+        try:
+             #Arreglo de Idiomas
+            listLanguages=['en','es','de',"fr","it","ja","zh-tw"]
 
-        #Arreglo de Idiomas
-        listLanguages=['en','es','de',"fr","it","ja","zh-tw"]
+            SrcLanguage  = self.CboFirstLanguage.currentIndex()
+            DestLanguage = self.CboLastLanguage.currentIndex()        
 
-        SrcLanguage  = self.CboFirstLanguage.currentIndex()
-        DestLanguage = self.CboLastLanguage.currentIndex()
-        
-
-        result = self.translator.translate(self.textFirstLanguage.toPlainText(),src=str(listLanguages[SrcLanguage]),
+            result = self.translator.translate(self.textFirstLanguage.toPlainText(),src=str(listLanguages[SrcLanguage]),
                                             dest=str(listLanguages[DestLanguage]))
-        self.textLastLanguage.setPlainText(result.text)
+            self.textLastLanguage.setPlainText(result.text)
+        except:
+            if(len(self.textLastLanguage.toPlainText()) == 1):
+                self.textLastLanguage.clear()
+            return
 
     def PasteText(self):
         clipboard = QtGui.QGuiApplication.clipboard()
