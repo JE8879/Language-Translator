@@ -170,14 +170,9 @@ class Ui_MainForm(object):
         #Creamos una Instancion a la Clase Translator
         self.translator = Translator()
 
-
-    def text(self):
-        result = self.textFirstLanguage.toPlainText()
-        self.textLastLanguage.setPlainText(result)
-
     def InitCombox(self):
-    	self.CboFirstLanguage.addItems(["Ingles","Español","Aleman","Frances","Italiano","Japones","Chino"])
-    	self.CboLastLanguage.addItems(["Ingles","Español","Aleman","Frances","Italiano","Japones","Chino"])
+    	self.CboFirstLanguage.addItems(["English","Spanish","German","French","Italian","Japanese","Chinese"])
+    	self.CboLastLanguage.addItems(["English","Spanish","German","French","Italian","Japanese","Chinese"])
 
     def Translate(self):
         #Controlamos los Errores que se Puedan Generar
@@ -213,12 +208,14 @@ class Ui_MainForm(object):
         self.textLastLanguage.clear()
 
     def ChangeLanguage(self):
+        SrcLanguage = self.CboFirstLanguage.currentIndex()
+        DestLanguage = self.CboLastLanguage.currentIndex()
 
-    	Firstlanguage = self.CboFirstLanguage.currentIndex()
-    	Lastlanguage  = self.CboLastLanguage.currentIndex()
+        self.CboFirstLanguage.setCurrentIndex(DestLanguage)
+        self.CboLastLanguage.setCurrentIndex(SrcLanguage)
 
-    	self.CboLastLanguage.setCurrentIndex(Firstlanguage)
-    	self.CboFirstLanguage.setCurrentIndex(Lastlanguage)
+        textLastlanguage = self.textLastLanguage.toPlainText()
+        self.textFirstLanguage.setPlainText(textLastlanguage)
 
 if __name__ == "__main__":
 
