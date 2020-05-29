@@ -9,6 +9,8 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 from googletrans import Translator
+from FormTools import Ui_FormTools
+
 import sys
 
 class Ui_MainForm(object):
@@ -48,26 +50,27 @@ class Ui_MainForm(object):
 		"")
         self.textLastLanguage.setObjectName("textLastLanguage")
 
-        self.BtnTranslate = QtWidgets.QPushButton(MainForm)
-        self.BtnTranslate.setGeometry(QtCore.QRect(340, 410, 121, 31))
+        self.BtnTools = QtWidgets.QPushButton(MainForm)
+        self.BtnTools.setGeometry(QtCore.QRect(480, 410, 121, 31))
         font = QtGui.QFont()
         font.setFamily("Century Gothic")
         font.setPointSize(10)
         font.setBold(True)
         font.setWeight(75)
-        self.BtnTranslate.setFont(font)
-        self.BtnTranslate.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.BtnTranslate.setStyleSheet("QPushButton{border-style:insert;border:1px solid;\n"
+        self.BtnTools.setFont(font)
+        self.BtnTools.setLayoutDirection(QtCore.Qt.LeftToRight)
+        self.BtnTools.setStyleSheet("QPushButton{border-style:insert;border:1px solid;\n"
 		"background-color:rgb(40, 116, 166);\n"
 		"color:white;}\n"
 		"QPushButton:hover{background-color:rgb(46, 134, 193);}\n"
 		"QPushButton:Pressed{background-color:rgb(52, 152, 219);}")
-        icon.addPixmap(QtGui.QPixmap("Images/IMG-Ttranslate.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.BtnTranslate.setIcon(icon)
-        self.BtnTranslate.setIconSize(QtCore.QSize(16, 16))
-        self.BtnTranslate.setAutoDefault(False)
-        self.BtnTranslate.setObjectName("BtnTranslate")
-        self.BtnTranslate.clicked.connect(self.Translate)
+        iconTools = QtGui.QIcon()
+        iconTools.addPixmap(QtGui.QPixmap("Images/IMG-Tools.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.BtnTools.setIcon(iconTools)
+        self.BtnTools.setIconSize(QtCore.QSize(16, 16))
+        self.BtnTools.setAutoDefault(False)
+        self.BtnTools.setObjectName("BtnTools")
+        self.BtnTools.clicked.connect(self.OpenFormTools)
 
         self.BtnPaste = QtWidgets.QPushButton(MainForm)
         self.BtnPaste.setGeometry(QtCore.QRect(20, 410, 101, 31))
@@ -78,8 +81,9 @@ class Ui_MainForm(object):
 		"color:white;}\n"
 		"QPushButton:hover{background-color:rgb(46, 134, 193);}\n"
 		"QPushButton:Pressed{background-color:rgb(52, 152, 219);}")
-        icon.addPixmap(QtGui.QPixmap("Images/IMG-Paste.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.BtnPaste.setIcon(icon)
+        iconPaste = QtGui.QIcon()
+        iconPaste.addPixmap(QtGui.QPixmap("Images/IMG-Paste.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.BtnPaste.setIcon(iconPaste)
         self.BtnPaste.setIconSize(QtCore.QSize(16, 16))
         self.BtnPaste.setAutoDefault(False)
         self.BtnPaste.setObjectName("BtnPaste")
@@ -94,8 +98,9 @@ class Ui_MainForm(object):
 		"color:white;}\n"
 		"QPushButton:hover{background-color:rgb(46, 134, 193);}\n"
 		"QPushButton:Pressed{background-color:rgb(52, 152, 219);}")
-        icon.addPixmap(QtGui.QPixmap("Images/IMG-Clear.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.BtnClean.setIcon(icon)
+        iconClear = QtGui.QIcon()
+        iconClear.addPixmap(QtGui.QPixmap("Images/IMG-Clear.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.BtnClean.setIcon(iconClear)
         self.BtnClean.setIconSize(QtCore.QSize(16, 16))
         self.BtnClean.setAutoDefault(False)
         self.BtnClean.setObjectName("BtnClean")
@@ -110,8 +115,9 @@ class Ui_MainForm(object):
 		"color:white;}\n"
 		"QPushButton:hover{background-color:rgb(46, 134, 193);}\n"
 		"QPushButton:Pressed{background-color:rgb(52, 152, 219);}")
-        icon.addPixmap(QtGui.QPixmap("Images/IMG-Copy.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.BtnCopy.setIcon(icon)
+        iconCopy = QtGui.QIcon()
+        iconCopy.addPixmap(QtGui.QPixmap("Images/IMG-Copy.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.BtnCopy.setIcon(iconCopy)
         self.BtnCopy.setIconSize(QtCore.QSize(16, 16))
         self.BtnCopy.setAutoDefault(False)
         self.BtnCopy.setObjectName("BtnCopy")
@@ -125,8 +131,9 @@ class Ui_MainForm(object):
 		"color:white;}\n"
 		"QPushButton:hover{background-color:rgb(243, 142, 50);}\n"
 		"QPushButton:Pressed{background-color:rgb(221, 139, 64);}")
-        icon.addPixmap(QtGui.QPixmap("Images/IMG-Trasfer.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.BtnChange.setIcon(icon)
+        iconTransfer = QtGui.QIcon()
+        iconTransfer.addPixmap(QtGui.QPixmap("Images/IMG-Trasfer.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.BtnChange.setIcon(iconTransfer)
         self.BtnChange.setObjectName("BtnChange")
         self.BtnChange.clicked.connect(self.ChangeLanguage)
 
@@ -159,16 +166,16 @@ class Ui_MainForm(object):
         _translate = QtCore.QCoreApplication.translate
         MainForm.setWindowTitle(_translate("MainForm", "Language Translate"))
 
-        self.BtnTranslate.setText(_translate("MainForm", "Traducir"))
-        self.BtnPaste.setText(_translate("MainForm", "Pegar"))
-        self.BtnClean.setText(_translate("MainForm", "Limpiar"))
-        self.BtnCopy.setText(_translate("MainForm", "Copiar"))
-        self.BtnChange.setText(_translate("MainForm", "Cambiar"))
+        self.BtnTools.setText(_translate("MainForm", "Tools..."))
+        self.BtnPaste.setText(_translate("MainForm", "Paste"))
+        self.BtnClean.setText(_translate("MainForm", "Clean"))
+        self.BtnCopy.setText(_translate("MainForm", "Copy"))
+        self.BtnChange.setText(_translate("MainForm", "Change"))
 
         self.InitCombox()
 
         #Creamos una Instancion a la Clase Translator
-        self.translator = Translator()
+        self.translator = Translator()       
 
     def InitCombox(self):
     	self.CboFirstLanguage.addItems(["English","Spanish","German","French","Italian","Japanese","Chinese"])
@@ -216,6 +223,13 @@ class Ui_MainForm(object):
 
         textLastlanguage = self.textLastLanguage.toPlainText()
         self.textFirstLanguage.setPlainText(textLastlanguage)
+
+    def OpenFormTools(self):        
+        self.window = QtWidgets.QWidget()
+        
+        self.ui = Ui_FormTools(self.textLastLanguage.toPlainText())
+        self.ui.setupUi(self.window)
+        self.window.show()
 
 if __name__ == "__main__":
 
