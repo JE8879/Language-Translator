@@ -124,7 +124,7 @@ class Ui_FormTools(object):
     def retranslateUi(self, FormTools):
         _translate = QtCore.QCoreApplication.translate
         FormTools.setWindowTitle(_translate("FormTools", "Tools"))
-        self.groupBox.setTitle(_translate("FormTools", "Import to"))
+        self.groupBox.setTitle(_translate("FormTools", "Export to"))
         self.groupBox_2.setStyleSheet(_translate("FormTools", "QGroupBox{color:white;}"))
         self.label.setText(_translate("FormTools", "Title:"))
         self.BtnAccept.setText(_translate("FormTools", "Accept"))
@@ -177,7 +177,7 @@ class Ui_FormTools(object):
 
         #Se valida que el texto no este vacio
         if(len(newText) == 0):
-           self.MessageBox("No se encontro Texo para crear el Documento","Atención")
+           self.MessageBox("No se encontro Texto para crear el Documento","Atención")
            return
         else:
             #Establecemos el numero de caracteres antes de saltar la linea
@@ -207,7 +207,7 @@ class Ui_FormTools(object):
 
         #Se valida que el Texto no este Vacio
         if(len(newText) == 0):
-            self.MessageBox("No se encontro Texo para crear el Documento","Atención")
+            self.MessageBox("No se encontro Texto para crear el Documento","Atención")
             return
         else:
             #Se crea la instancia 

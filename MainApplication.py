@@ -10,6 +10,8 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from googletrans import Translator
 from FormTools import Ui_FormTools
+import socket
+import threading
 
 import sys
 
@@ -35,7 +37,7 @@ class Ui_MainForm(object):
 		"color:white;\n"
 		"")
         self.textFirstLanguage.setObjectName("textFirstLanguage")
-        self.textFirstLanguage.textChanged.connect(self.Translate)
+        self.textFirstLanguage.textChanged.connect(self.ExecuteTranslate)
 
         self.textLastLanguage = QtWidgets.QTextEdit(MainForm)
         self.textLastLanguage.setGeometry(QtCore.QRect(480, 50, 441, 351))
@@ -43,11 +45,8 @@ class Ui_MainForm(object):
         font.setFamily("Century Gothic")
         font.setPointSize(12)
         self.textLastLanguage.setFont(font)
-        self.textLastLanguage.setStyleSheet("border-style:insert;\n"
-		"border:1px solid;\n"
-		"border-color:rgb(88, 214, 141);\n"
-		"color:white;\n"
-		"")
+        self.textLastLanguage.setStyleSheet("border-style:insert;border:1px solid;border-color:rgb(88, 214, 141);\n"
+		"color:white;")
         self.textLastLanguage.setObjectName("textLastLanguage")
 
         self.BtnTools = QtWidgets.QPushButton(MainForm)
@@ -59,8 +58,7 @@ class Ui_MainForm(object):
         font.setWeight(75)
         self.BtnTools.setFont(font)
         self.BtnTools.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.BtnTools.setStyleSheet("QPushButton{border-style:insert;border:1px solid;\n"
-		"background-color:rgb(40, 116, 166);\n"
+        self.BtnTools.setStyleSheet("QPushButton{border-style:insert;border:1px solid;background-color:rgb(40, 116, 166);\n"
 		"color:white;}\n"
 		"QPushButton:hover{background-color:rgb(46, 134, 193);}\n"
 		"QPushButton:Pressed{background-color:rgb(52, 152, 219);}")
@@ -180,18 +178,28 @@ class Ui_MainForm(object):
     def InitCombox(self):
     	self.CboFirstLanguage.addItems(["English","Spanish","German","French","Italian","Japanese","Chinese"])
     	self.CboLastLanguage.addItems(["English","Spanish","German","French","Italian","Japanese","Chinese"])
+    
+    #Se Ejecuta el Traductor
+    def ExecuteTranslate(self):
+        isConnected = self.CheckConnection()
+
+        if(isConnected):
+            self.Translate()
+        else:
+            self.MessageBox("No se pudo establecer la Conexion a Internet","Error")
+            return
 
     def Translate(self):
         #Controlamos los Errores que se Puedan Generar
         try:
-             #Arreglo de Idiomas
+            #Arreglo de Idiomas
             listLanguages=['en','es','de',"fr","it","ja","zh-tw"]
 
             SrcLanguage  = self.CboFirstLanguage.currentIndex()
             DestLanguage = self.CboLastLanguage.currentIndex()        
 
             result = self.translator.translate(self.textFirstLanguage.toPlainText(),src=str(listLanguages[SrcLanguage]),
-                                            dest=str(listLanguages[DestLanguage]))
+                                                dest=str(listLanguages[DestLanguage]))
             self.textLastLanguage.setPlainText(result.text)
         except:
             if(len(self.textLastLanguage.toPlainText()) == 1):
@@ -230,6 +238,28 @@ class Ui_MainForm(object):
         self.ui = Ui_FormTools(self.textLastLanguage.toPlainText())
         self.ui.setupUi(self.window)
         self.window.show()
+
+    #Se Verifica la Conexion a internet
+    def CheckConnection(self):
+        REMOTE_SERVER = "www.google.com"
+        try:
+            host = socket.gethostbyname(REMOTE_SERVER)
+            connect = socket.create_connection((host,80),2)
+            return True
+        except:
+            return False
+    
+    #Se Crea un Mensage Personalizable
+    def MessageBox(self,message,title):
+        msg = QtWidgets.QMessageBox()
+        msg.setIcon(QtWidgets.QMessageBox.Information)
+        msg.setText(message)
+        msg.setWindowTitle(title)
+        msg.setStandardButtons(QtWidgets.QMessageBox.Ok)
+        msg.exec()
+        return
+
+
 
 if __name__ == "__main__":
 
