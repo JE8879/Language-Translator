@@ -1,0 +1,21 @@
+QPushButton{
+    border-style:insert;
+    border:1px solid;
+    background-color:rgb(40, 116, 166);
+    color: white;
+}
+
+QPushButton:hover{
+    background-color:rgb(46, 134, 193);
+}
+QPushButton:Pressed{
+    background-color:rgb(52, 152, 219);
+}
+
+QComboBox{
+    border-style: inset;
+    border: 1px solid;
+    border-color:rgb(52, 152, 219);
+    background-color:rgb(39, 55, 70);
+    color:gray;
+}

@@ -8,11 +8,10 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtCore import Qt
 from googletrans import Translator
 from FormTools import Ui_FormTools
 import socket
-import threading
-
 import sys
 
 class Ui_MainForm(object):
@@ -24,6 +23,11 @@ class Ui_MainForm(object):
         icon.addPixmap(QtGui.QPixmap("Images/IMG-TranslateForm.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainForm.setWindowIcon(icon)
         MainForm.setStyleSheet("background-color: rgb(39, 55, 70);")
+        MainForm.setWindowFlags(Qt.WindowCloseButtonHint | Qt.WindowMinimizeButtonHint)
+
+        #Open Styles
+        self.file = open('main.css','r')
+        self.styleSheet = self.file.read()
 
         self.textFirstLanguage = QtWidgets.QTextEdit(MainForm)
         self.textFirstLanguage.setGeometry(QtCore.QRect(20, 50, 441, 351))
@@ -58,10 +62,7 @@ class Ui_MainForm(object):
         font.setWeight(75)
         self.BtnTools.setFont(font)
         self.BtnTools.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.BtnTools.setStyleSheet("QPushButton{border-style:insert;border:1px solid;background-color:rgb(40, 116, 166);\n"
-		"color:white;}\n"
-		"QPushButton:hover{background-color:rgb(46, 134, 193);}\n"
-		"QPushButton:Pressed{background-color:rgb(52, 152, 219);}")
+        self.BtnTools.setStyleSheet(self.styleSheet)
         iconTools = QtGui.QIcon()
         iconTools.addPixmap(QtGui.QPixmap("Images/IMG-Tools.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.BtnTools.setIcon(iconTools)
@@ -74,11 +75,7 @@ class Ui_MainForm(object):
         self.BtnPaste.setGeometry(QtCore.QRect(20, 410, 101, 31))
         self.BtnPaste.setFont(font)
         self.BtnPaste.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.BtnPaste.setStyleSheet("QPushButton{border-style:insert;border:1px solid;\n"
-		"background-color:rgb(40, 116, 166);\n"
-		"color:white;}\n"
-		"QPushButton:hover{background-color:rgb(46, 134, 193);}\n"
-		"QPushButton:Pressed{background-color:rgb(52, 152, 219);}")
+        self.BtnPaste.setStyleSheet(self.styleSheet)
         iconPaste = QtGui.QIcon()
         iconPaste.addPixmap(QtGui.QPixmap("Images/IMG-Paste.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.BtnPaste.setIcon(iconPaste)
@@ -91,11 +88,7 @@ class Ui_MainForm(object):
         self.BtnClean.setGeometry(QtCore.QRect(130, 410, 101, 31))
         self.BtnClean.setFont(font)
         self.BtnClean.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.BtnClean.setStyleSheet("QPushButton{border-style:insert;border:1px solid;\n"
-		"background-color:rgb(40, 116, 166);\n"
-		"color:white;}\n"
-		"QPushButton:hover{background-color:rgb(46, 134, 193);}\n"
-		"QPushButton:Pressed{background-color:rgb(52, 152, 219);}")
+        self.BtnClean.setStyleSheet(self.styleSheet)
         iconClear = QtGui.QIcon()
         iconClear.addPixmap(QtGui.QPixmap("Images/IMG-Clear.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.BtnClean.setIcon(iconClear)
@@ -108,11 +101,7 @@ class Ui_MainForm(object):
         self.BtnCopy.setGeometry(QtCore.QRect(800, 410, 121, 31))
         self.BtnCopy.setFont(font)
         self.BtnCopy.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.BtnCopy.setStyleSheet("QPushButton{border-style:insert;border:1px solid;\n"
-		"background-color:rgb(40, 116, 166);\n"
-		"color:white;}\n"
-		"QPushButton:hover{background-color:rgb(46, 134, 193);}\n"
-		"QPushButton:Pressed{background-color:rgb(52, 152, 219);}")
+        self.BtnCopy.setStyleSheet(self.styleSheet)
         iconCopy = QtGui.QIcon()
         iconCopy.addPixmap(QtGui.QPixmap("Images/IMG-Copy.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.BtnCopy.setIcon(iconCopy)
@@ -124,11 +113,7 @@ class Ui_MainForm(object):
         self.BtnChange = QtWidgets.QPushButton(MainForm)
         self.BtnChange.setGeometry(QtCore.QRect(420, 10, 111, 31))
         self.BtnChange.setFont(font)
-        self.BtnChange.setStyleSheet("QPushButton{border-style:insert;border:1px solid;\n"
-		"background-color:rgb(225, 116, 16);\n"
-		"color:white;}\n"
-		"QPushButton:hover{background-color:rgb(243, 142, 50);}\n"
-		"QPushButton:Pressed{background-color:rgb(221, 139, 64);}")
+        self.BtnChange.setStyleSheet(self.styleSheet)
         iconTransfer = QtGui.QIcon()
         iconTransfer.addPixmap(QtGui.QPixmap("Images/IMG-Trasfer.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.BtnChange.setIcon(iconTransfer)
@@ -138,23 +123,13 @@ class Ui_MainForm(object):
         self.CboFirstLanguage = QtWidgets.QComboBox(MainForm)
         self.CboFirstLanguage.setGeometry(QtCore.QRect(20, 20, 181, 22))
         self.CboFirstLanguage.setFont(font)
-        self.CboFirstLanguage.setStyleSheet("border-style:insert;\n"
-		"border:1px solid;\n"
-		"border-color:rgb(52, 152, 219);\n"
-		"background-color:rgb(39, 55, 70);\n"
-		"color:gray;\n"
-		"")
+        self.CboFirstLanguage.setStyleSheet(self.styleSheet)
         self.CboFirstLanguage.setObjectName("CboFirstLanguage")
 
         self.CboLastLanguage = QtWidgets.QComboBox(MainForm)
         self.CboLastLanguage.setGeometry(QtCore.QRect(740, 20, 181, 22))
         self.CboLastLanguage.setFont(font)
-        self.CboLastLanguage.setStyleSheet("border-style:insert;\n"
-		"border:1px solid;\n"
-		"border-color:rgb(52, 152, 219);\n"
-		"background-color:rgb(39, 55, 70);\n"
-		"color:gray;\n"
-		"")
+        self.CboLastLanguage.setStyleSheet(self.styleSheet)
         self.CboLastLanguage.setObjectName("CboLastLanguage")
 
         self.retranslateUi(MainForm)

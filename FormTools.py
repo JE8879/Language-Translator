@@ -15,7 +15,6 @@ import textwrap
 import sys
 
 class Ui_FormTools(object):
-
     #Se Crean el Contructor y pedimos el Texto 
     def __init__(self,getText):
         self.getText = getText
@@ -124,7 +123,7 @@ class Ui_FormTools(object):
     def retranslateUi(self, FormTools):
         _translate = QtCore.QCoreApplication.translate
         FormTools.setWindowTitle(_translate("FormTools", "Tools"))
-        self.groupBox.setTitle(_translate("FormTools", "Export to"))
+        self.groupBox.setTitle(_translate("FormTools", "Save as"))
         self.groupBox_2.setStyleSheet(_translate("FormTools", "QGroupBox{color:white;}"))
         self.label.setText(_translate("FormTools", "Title:"))
         self.BtnAccept.setText(_translate("FormTools", "Accept"))
@@ -174,6 +173,10 @@ class Ui_FormTools(object):
     def CreateNewPDF(self):
         #Se Obtiene el Texto
         newText = self.getText
+
+        if(len(self.textTitle.text()) == 0):
+            self.MessageBox("Porfavor Coloque un Titulo","Atención")
+            return
 
         #Se valida que el texto no este vacio
         if(len(newText) == 0):
