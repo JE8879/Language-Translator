@@ -8,6 +8,7 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtCore import Qt
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import letter
 from docx import Document
@@ -26,12 +27,13 @@ class Ui_FormTools(object):
         mainIcon = QtGui.QIcon()
         mainIcon.addPixmap(QtGui.QPixmap("Images/IMG-Tools.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         FormTools.setWindowIcon(mainIcon)
-        FormTools.setStyleSheet("background-color: rgb(44, 62, 80);")
+        # FormTools.setStyleSheet("background-color: rgb(44, 62, 80);")
         FormTools.setObjectName("FormTools")
+        FormTools.setWindowFlags(Qt.WindowCloseButtonHint | Qt.WindowMinimizeButtonHint)
 
         self.groupBox = QtWidgets.QGroupBox(FormTools)
         self.groupBox.setGeometry(QtCore.QRect(10, 10, 311, 161))
-        self.groupBox.setStyleSheet("QGroupBox{color:white;}")
+        self.groupBox.setStyleSheet("QGroupBox{color:black;}")
         self.groupBox.setObjectName("groupBox")
 
         self.BtnPdf = QtWidgets.QPushButton(self.groupBox)
@@ -90,7 +92,7 @@ class Ui_FormTools(object):
 
         self.textTitle = QtWidgets.QLineEdit(self.groupBox_2)
         self.textTitle.setGeometry(QtCore.QRect(60, 30, 211, 20))
-        self.textTitle.setStyleSheet("QLineEdit#textTitle{color:white;}")
+        self.textTitle.setStyleSheet("QLineEdit#textTitle{color:black;}")
         self.textTitle.setObjectName("textTitle")
 
         self.BtnAccept = QtWidgets.QPushButton(self.groupBox_2)
@@ -116,6 +118,10 @@ class Ui_FormTools(object):
         "QPushButton:hover{background-color: rgb(229, 152, 102);}\n"
         "QPushButton:pressed{background-color: rgb(220, 118, 51);}")
         self.BtnCancel.setObjectName("BtnCancel")
+        self.BtnCancel.clicked.connect(FormTools.close)
+
+        self.retranslateUi(FormTools)
+        QtCore.QMetaObject.connectSlotsByName(FormTools)
 
         self.retranslateUi(FormTools)
         QtCore.QMetaObject.connectSlotsByName(FormTools)
@@ -124,7 +130,7 @@ class Ui_FormTools(object):
         _translate = QtCore.QCoreApplication.translate
         FormTools.setWindowTitle(_translate("FormTools", "Tools"))
         self.groupBox.setTitle(_translate("FormTools", "Save as"))
-        self.groupBox_2.setStyleSheet(_translate("FormTools", "QGroupBox{color:white;}"))
+        self.groupBox_2.setStyleSheet(_translate("FormTools", "QGroupBox{color:black;}"))
         self.label.setText(_translate("FormTools", "Title:"))
         self.BtnAccept.setText(_translate("FormTools", "Accept"))
         self.BtnCancel.setText(_translate("FormTools", "Cancel"))
@@ -240,6 +246,13 @@ if __name__ == "__main__":
     ui = Ui_FormTools()
     
     ui.setupUi(FormTools)
+
+    p = QtGui.QPalette()
+    gradient = QtGui.QLinearGradient(0, 0, 0, 400)
+    gradient.setColorAt(0.0, QtGui.QColor(251, 252, 252))
+    gradient.setColorAt(1.0, QtGui.QColor(208, 211, 212))
+    p.setBrush(QtGui.QPalette.Window, QtGui.QBrush(gradient))
+    FormTools.setPalette(p)
     
     FormTools.show()
     

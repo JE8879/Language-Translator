@@ -6,391 +6,147 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>942</width>
-    <height>458</height>
+    <width>930</width>
+    <height>422</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>20</verstretch>
+   </sizepolicy>
   </property>
   <property name="windowTitle">
    <string>Language Translate</string>
   </property>
-  <property name="windowIcon">
-   <iconset>
-    <normaloff>Images/IMG-TranslateForm.png</normaloff>Images/IMG-TranslateForm.png</iconset>
-  </property>
-  <property name="styleSheet">
-   <string notr="true">background-color: rgb(39, 55, 70);</string>
-  </property>
-  <widget class="QTextEdit" name="textFirstLanguage">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>50</y>
-     <width>441</width>
-     <height>351</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Century Gothic</family>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">border-style:insert;
-border:1px solid;
-border-color:rgb(88, 214, 141);
-color:white;
-</string>
-   </property>
-  </widget>
-  <widget class="QTextEdit" name="textLastLanguage">
-   <property name="geometry">
-    <rect>
-     <x>480</x>
-     <y>50</y>
-     <width>441</width>
-     <height>351</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Century Gothic</family>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">border-style:insert;
-border:1px solid;
-border-color:rgb(88, 214, 141);
-color:white;
-</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="BtnTranslate">
-   <property name="geometry">
-    <rect>
-     <x>340</x>
-     <y>410</y>
-     <width>121</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Century Gothic</family>
-     <pointsize>10</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="layoutDirection">
-    <enum>Qt::LeftToRight</enum>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton
-{
-  		border-style:insert;	
-		border:1px solid;
-		background-color:rgb(40, 116, 166);
-		color:white;	
-}
-
-QPushButton:hover
-{
-   		background-color:rgb(46, 134, 193);
-}
-
-QPushButton:Pressed
-{
-		background-color:rgb(52, 152, 219);
-}</string>
-   </property>
-   <property name="text">
-    <string>Traducir</string>
-   </property>
-   <property name="icon">
-    <iconset>
-     <normaloff>Images/IMG-Ttranslate.png</normaloff>Images/IMG-Ttranslate.png</iconset>
-   </property>
-   <property name="iconSize">
-    <size>
-     <width>16</width>
-     <height>16</height>
-    </size>
-   </property>
-   <property name="autoDefault">
-    <bool>false</bool>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="BtnPaste">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>410</y>
-     <width>101</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Century Gothic</family>
-     <pointsize>10</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="layoutDirection">
-    <enum>Qt::LeftToRight</enum>
-   </property>
-   <property name="styleSheet">
-    <string>QPushButton
-{
-  		border-style:insert;	
-		border:1px solid;
-		background-color:rgb(40, 116, 166);
-		color:white;	
-}
-
-QPushButton:hover
-{
-   		background-color:rgb(46, 134, 193);
-}
-
-QPushButton:Pressed
-{
-		background-color:rgb(52, 152, 219);
-}</string>
-   </property>
-   <property name="text">
-    <string>Pegar</string>
-   </property>
-   <property name="icon">
-    <iconset>
-     <normaloff>Images/IMG-Paste.png</normaloff>Images/IMG-Paste.png</iconset>
-   </property>
-   <property name="iconSize">
-    <size>
-     <width>16</width>
-     <height>16</height>
-    </size>
-   </property>
-   <property name="autoDefault">
-    <bool>false</bool>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="BtnClean">
-   <property name="geometry">
-    <rect>
-     <x>130</x>
-     <y>410</y>
-     <width>101</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Century Gothic</family>
-     <pointsize>10</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="layoutDirection">
-    <enum>Qt::LeftToRight</enum>
-   </property>
-   <property name="styleSheet">
-    <string>QPushButton
-{
-  		border-style:insert;	
-		border:1px solid;
-		background-color:rgb(40, 116, 166);
-		color:white;	
-}
-
-QPushButton:hover
-{
-   		background-color:rgb(46, 134, 193);
-}
-
-QPushButton:Pressed
-{
-		background-color:rgb(52, 152, 219);
-}</string>
-   </property>
-   <property name="text">
-    <string>Limpiar</string>
-   </property>
-   <property name="icon">
-    <iconset>
-     <normaloff>Images/IMG-Clear.png</normaloff>Images/IMG-Clear.png</iconset>
-   </property>
-   <property name="iconSize">
-    <size>
-     <width>16</width>
-     <height>16</height>
-    </size>
-   </property>
-   <property name="autoDefault">
-    <bool>false</bool>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="CboFirstLanguage">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>20</y>
-     <width>181</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Century Gothic</family>
-     <pointsize>9</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">border-style:insert;
-border:1px solid;
-border-color:rgb(52, 152, 219);
-background-color:rgb(39, 55, 70);
-color:gray;
-</string>
-   </property>
-   <property name="currentText">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="BtnCopy">
-   <property name="geometry">
-    <rect>
-     <x>800</x>
-     <y>410</y>
-     <width>121</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Century Gothic</family>
-     <pointsize>10</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="layoutDirection">
-    <enum>Qt::LeftToRight</enum>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton
-{
-  		border-style:insert;	
-		border:1px solid;
-		background-color:rgb(40, 116, 166);
-		color:white;	
-}
-
-QPushButton:hover
-{
-   		background-color:rgb(46, 134, 193);
-}
-
-QPushButton:Pressed
-{
-		background-color:rgb(52, 152, 219);
-}</string>
-   </property>
-   <property name="text">
-    <string>Copiar</string>
-   </property>
-   <property name="icon">
-    <iconset>
-     <normaloff>Images/IMG-Copy.png</normaloff>Images/IMG-Copy.png</iconset>
-   </property>
-   <property name="iconSize">
-    <size>
-     <width>16</width>
-     <height>16</height>
-    </size>
-   </property>
-   <property name="autoDefault">
-    <bool>false</bool>
-   </property>
-  </widget>
-  <widget class="QComboBox" name="CboLastLanguage">
-   <property name="geometry">
-    <rect>
-     <x>740</x>
-     <y>20</y>
-     <width>181</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Century Gothic</family>
-     <pointsize>10</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">border-style:insert;
-border:1px solid;
-border-color:rgb(52, 152, 219);
-background-color:rgb(39, 55, 70);
-color:gray;
-</string>
-   </property>
-   <property name="currentText">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="BtnChange">
-   <property name="geometry">
-    <rect>
-     <x>420</x>
-     <y>10</y>
-     <width>111</width>
-     <height>31</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Century Gothic</family>
-     <pointsize>10</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">QPushButton
-{
-		border-style:insert;	
-		border:1px solid;
-		background-color:rgb(245, 176, 65);
-}
-
-QPushButton:hover
-{
-   background-color:rgb(248, 196, 113);
-}
-
-QPushButton:Pressed
-{
-		background-color:rgb(249, 231, 159);
-}</string>
-   </property>
-   <property name="text">
-    <string>Cambiar</string>
-   </property>
-   <property name="icon">
-    <iconset>
-     <normaloff>Images/IMG-Trasfer.png</normaloff>Images/IMG-Trasfer.png</iconset>
-   </property>
-  </widget>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0" colspan="4">
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="QComboBox" name="CboSrcLaguage"/>
+     </item>
+     <item>
+      <widget class="QPushButton" name="BtnChange">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Change</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>Images/IMG-Transfer.png</normaloff>Images/IMG-Transfer.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="CboDestLanguage"/>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="0" colspan="2">
+    <widget class="QTextEdit" name="textSrcLanguage">
+     <property name="font">
+      <font>
+       <family>Calibri Light</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="2" colspan="2">
+    <widget class="QTextEdit" name="textDestLanguage">
+     <property name="font">
+      <font>
+       <family>Calibri Light</family>
+       <pointsize>14</pointsize>
+      </font>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="2" colspan="2">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QPushButton" name="BtnTools">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Tools</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>Images/IMG-Tools.png</normaloff>Images/IMG-Tools.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="BtnCopy">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Copy</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>Images/IMG-Copy.png</normaloff>Images/IMG-Copy.png</iconset>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="2" column="0" colspan="2">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="sizeConstraint">
+      <enum>QLayout::SetDefaultConstraint</enum>
+     </property>
+     <item>
+      <widget class="QPushButton" name="BtnPaste">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Paste</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>Images/IMG-Paste.png</normaloff>Images/IMG-Paste.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="BtnClear">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Clear</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>Images/IMG-Clear.png</normaloff>Images/IMG-Clear.png</iconset>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections/>
