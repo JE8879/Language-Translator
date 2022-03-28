@@ -38,7 +38,7 @@
        </property>
        <property name="icon">
         <iconset>
-         <normaloff>Images/IMG-Transfer.png</normaloff>Images/IMG-Transfer.png</iconset>
+         <normaloff>../Assets/Images/IMG-Transfer.png</normaloff>../Assets/Images/IMG-Transfer.png</iconset>
        </property>
       </widget>
      </item>
@@ -47,8 +47,8 @@
      </item>
     </layout>
    </item>
-   <item row="1" column="0" colspan="2">
-    <widget class="QTextEdit" name="textSrcLanguage">
+   <item row="1" column="2" colspan="2">
+    <widget class="QTextEdit" name="textDestLanguage">
      <property name="font">
       <font>
        <family>Calibri Light</family>
@@ -57,8 +57,8 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="2" colspan="2">
-    <widget class="QTextEdit" name="textDestLanguage">
+   <item row="1" column="0" colspan="2">
+    <widget class="QTextEdit" name="textSrcLanguage">
      <property name="font">
       <font>
        <family>Calibri Light</family>
@@ -82,7 +82,7 @@
        </property>
        <property name="icon">
         <iconset>
-         <normaloff>Images/IMG-Tools.png</normaloff>Images/IMG-Tools.png</iconset>
+         <normaloff>../Assets/Images/IMG-Tools.png</normaloff>../Assets/Images/IMG-Tools.png</iconset>
        </property>
       </widget>
      </item>
@@ -99,7 +99,7 @@
        </property>
        <property name="icon">
         <iconset>
-         <normaloff>Images/IMG-Copy.png</normaloff>Images/IMG-Copy.png</iconset>
+         <normaloff>../Assets/Images/IMG-Copy.png</normaloff>../Assets/Images/IMG-Copy.png</iconset>
        </property>
       </widget>
      </item>
@@ -123,7 +123,7 @@
        </property>
        <property name="icon">
         <iconset>
-         <normaloff>Images/IMG-Paste.png</normaloff>Images/IMG-Paste.png</iconset>
+         <normaloff>../Assets/Images/IMG-Paste.png</normaloff>../Assets/Images/IMG-Paste.png</iconset>
        </property>
       </widget>
      </item>
@@ -140,7 +140,7 @@
        </property>
        <property name="icon">
         <iconset>
-         <normaloff>Images/IMG-Clear.png</normaloff>Images/IMG-Clear.png</iconset>
+         <normaloff>../Assets/Images/IMG-Clear.png</normaloff>../Assets/Images/IMG-Clear.png</iconset>
        </property>
       </widget>
      </item>
