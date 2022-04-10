@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>930</width>
-    <height>422</height>
+    <width>1200</width>
+    <height>500</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -18,6 +18,10 @@
   </property>
   <property name="windowTitle">
    <string>Language Translate</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>../Assets/Images/Main-Image.png</normaloff>../Assets/Images/Main-Image.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0" colspan="4">
@@ -141,6 +145,23 @@
        <property name="icon">
         <iconset>
          <normaloff>../Assets/Images/IMG-Clear.png</normaloff>../Assets/Images/IMG-Clear.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="BtnTranslate">
+       <property name="font">
+        <font>
+         <family>Century Gothic</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Translate</string>
+       </property>
+       <property name="icon">
+        <iconset>
+         <normaloff>../Assets/Images/IMG-Translator.png</normaloff>../Assets/Images/IMG-Translator.png</iconset>
        </property>
       </widget>
      </item>

@@ -1,5 +1,4 @@
 import sys
-import threading
 from FrmTools import ToolsTranlator
 from googletrans import Translator
 from PyQt5 import QtCore, QtGui, QtWidgets, uic
@@ -11,6 +10,10 @@ class AppTranslator(QtWidgets.QWidget):
         super(AppTranslator,self).__init__()
 
         uic.loadUi('Templates/MainForm.ui',self)
+        self.setStyleSheet('background-color:rgb(40, 55, 71);')
+
+        with open('Assets/CSS/app.css') as fileCss:
+            self.globalStyles = fileCss.read()
 
         self.gridLayout = self.findChild(QtWidgets.QGridLayout, 'gridLayout')
 
@@ -24,29 +27,42 @@ class AppTranslator(QtWidgets.QWidget):
 
         # ---------------------- QTextEdits ----------------------#
         self.textSrcLanguage = self.findChild(QtWidgets.QTextEdit, 'textSrcLanguage')
-        self.textSrcLanguage.textChanged.connect(self.ExecuteTranslate)
+        self.textSrcLanguage.setStyleSheet(self.globalStyles)
 
         self.textDestLanguage = self.findChild(QtWidgets.QTextEdit, 'textDestLanguage')
+        self.textDestLanguage.setStyleSheet(self.globalStyles)
 
         # ---------------------- QPushButtons ----------------------#
         self.BtnPaste = self.findChild(QtWidgets.QPushButton, 'BtnPaste')
         self.BtnPaste.clicked.connect(self.PasteText)
+        self.BtnPaste.setStyleSheet(self.globalStyles)
 
         self.BtnCopy = self.findChild(QtWidgets.QPushButton, 'BtnCopy')
         self.BtnCopy.clicked.connect(self.CopyText)
+        self.BtnCopy.setStyleSheet(self.globalStyles)
 
         self.BtnClear = self.findChild(QtWidgets.QPushButton, 'BtnClear')
         self.BtnClear.clicked.connect(self.ClearText)
+        self.BtnClear.setStyleSheet(self.globalStyles)
 
         self.BtnTools = self.findChild(QtWidgets.QPushButton, 'BtnTools')
         self.BtnTools.clicked.connect(self.OpenFormTools)
+        self.BtnTools.setStyleSheet(self.globalStyles)
 
         self.BtnChange = self.findChild(QtWidgets.QPushButton, 'BtnChange')
         self.BtnChange.clicked.connect(self.ChangeLanguage)
+        self.BtnChange.setStyleSheet(self.globalStyles)
+
+        self.BtnTranslate = self.findChild(QtWidgets.QPushButton, 'BtnTranslate')
+        self.BtnTranslate.clicked.connect(self.ExecuteTranslate)
+        self.BtnTranslate.setStyleSheet(self.globalStyles)
 
         # ---------------------- QComboBoxes ----------------------#
         self.CboSrcLaguage = self.findChild(QtWidgets.QComboBox, 'CboSrcLaguage')
+        self.CboSrcLaguage.setStyleSheet(self.globalStyles)
+
         self.CboDestLanguage = self.findChild(QtWidgets.QComboBox, 'CboDestLanguage')
+        self.CboDestLanguage.setStyleSheet(self.globalStyles)
 
         self.InitCombobox()
         
@@ -55,9 +71,6 @@ class AppTranslator(QtWidgets.QWidget):
         self.show()
 
     def ExecuteTranslate(self):
-        threading.Thread(target=self.TranslateWords()).start()
-
-    def TranslateWords(self):
         try:
             listLanguages = ['en','es','de','fr','it','ja','zh-tw']
             SrcLanguage = self.CboSrcLaguage.currentIndex()
@@ -110,8 +123,12 @@ class AppTranslator(QtWidgets.QWidget):
         return
 
     def OpenFormTools(self):
-        self.toolWindow = ToolsTranlator(self.textDestLanguage.toPlainText())
-        self.toolWindow.show()
+        if(not self.textDestLanguage.toPlainText()):
+            self.MessageBox('No se encontro texto para crear el documento', 'Atención')
+            return
+        else:
+            self.toolWindow = ToolsTranlator(self.textDestLanguage.toPlainText())
+            self.toolWindow.show()
 
 if __name__ == '__main__':
 

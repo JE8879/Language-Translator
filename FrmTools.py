@@ -17,15 +17,26 @@ class ToolsTranlator(QtWidgets.QWidget):
         uic.loadUi('Templates/FormTools.ui',self)
         self.setMinimumSize(QtCore.QSize(330,200))
         self.setMaximumSize(QtCore.QSize(330,200))
+        self.setStyleSheet('background-color:rgb(40, 55, 71);')
+
+        with open('Assets/CSS/app.css') as fileCSS:
+            self.globalStyles = fileCSS.read()
 
         # --------------- QPushButtons ---------------- #
         self.BtnOptionPDF = self.findChild(QtWidgets.QPushButton, 'BtnPdf')
+        self.BtnOptionPDF.clicked.connect(self.DisableTwo)
+        self.BtnOptionPDF.setStyleSheet(self.globalStyles)
+
         self.BtnOptionDOC = self.findChild(QtWidgets.QPushButton, 'BtnWord')
+        self.BtnOptionDOC.clicked.connect(self.DisableOne)
+        self.BtnOptionDOC.setStyleSheet(self.globalStyles)
 
         self.BtnSave = self.findChild(QtWidgets.QPushButton, 'BtnSave')
+        self.BtnSave.setStyleSheet(self.globalStyles)
         self.BtnSave.clicked.connect(self.CheckStateButtons)
 
         self.BtnCancel = self.findChild(QtWidgets.QPushButton, 'BtnCancel')
+        self.BtnCancel.setStyleSheet(self.globalStyles)
         self.BtnCancel.clicked.connect(self.close)
 
     def CheckStateButtons(self):
@@ -44,15 +55,9 @@ class ToolsTranlator(QtWidgets.QWidget):
         fileName,_ = QtWidgets.QFileDialog.getSaveFileName(self,"Save file...",filter="Word Files (*.docx)")
         if(fileName):            
             self.CreateNewDocx(fileName)
-            self.ResetFields()
-            
+            self.ResetFields()          
             
     def CreatePDF(self, filename):
-        # Validamos que el texto no este vacio
-        if(len(self.textTranslate) == 0):
-            self.ShowMessage('No se encontro texto para crear el Documento', 'Atención')
-            return
-
         # Establecemos el numero de caracteres antes de saltar la linea
         wrapper = textwrap.TextWrapper(width=103)
         newtext = wrapper.wrap(text=self.textTranslate)
@@ -76,11 +81,6 @@ class ToolsTranlator(QtWidgets.QWidget):
         self.ShowMessage("Documento creado con Exito", 'Atención')
 
     def CreateNewDocx(self, filename):
-        # Validamos que el texto no este vacio
-        if(len(self.textTranslate) == 0):
-            self.ShowMessage('No se encontro texto para crear el Documento', 'Atención')
-            return
-
         # Creamos una instancia
         newDocument = Document()
         # Escribimos en el Documento
@@ -103,6 +103,12 @@ class ToolsTranlator(QtWidgets.QWidget):
         self.BtnOptionPDF.setChecked(False)
         self.BtnOptionDOC.setChecked(False)
         self.textTranslate = ''
+
+    def DisableOne(self):
+        self.BtnOptionPDF.setChecked(False)
+        
+    def DisableTwo(self):
+        self.BtnOptionDOC.setChecked(False)
 
 if __name__ == '__main__':
 

@@ -1,0 +1,59 @@
+.QPushButton{
+    background-color: rgb(41, 128, 185);
+    border: 1px solid transparent;
+    color: white;
+    height: 25px;
+}
+
+.QPushButton:hover{
+    background-color: rgb(46, 134, 193);
+}
+
+.QPushButton:pressed{
+    border: 1px solid transparent;
+    background-color: rgb(127, 179, 213);
+}
+
+.QTextEdit{
+    background-color: rgb(46, 64, 83);
+    color: white;
+}
+
+.QComboBox{
+    background-color: rgb(46, 64, 83);
+    border: 1px solid rgb(46, 64, 83);
+    color: white;
+    height: 25px;
+}
+
+/* Custom Specific Controls */
+
+.QPushButton#BtnPdf{
+    background-color: rgb(46, 64, 83);
+    border-radius: 10px;
+}
+
+.QPushButton#BtnWord{
+    background-color: rgb(46, 64, 83);
+    border-radius: 10px;
+}
+
+.QPushButton#BtnWord:hover
+{
+    background-color: rgb(52, 73, 94);
+}
+
+.QPushButton#BtnPdf:hover
+{
+    background-color: rgb(52, 73, 94);
+}
+
+.QPushButton#BtnWord:checked
+{
+    background-color: rgb(93, 109, 126);
+}
+
+.QPushButton#BtnPdf:checked
+{
+    background-color: rgb(93, 109, 126);
+}
